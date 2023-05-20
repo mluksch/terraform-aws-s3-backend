@@ -3,5 +3,5 @@ output "namespace" {
 }
 
 output "user_arns" {
-  value = var.user_arns
+  value = local.user_arns
 }

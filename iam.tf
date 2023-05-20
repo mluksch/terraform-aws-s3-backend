@@ -18,9 +18,9 @@ data "aws_iam_policy_document" "backend" {
     actions = ["sts:AssumeRole"]
     // Wer oder was darf diese Rolle annehmen?
     principals {
-      identifiers = var.user_arns
+      identifiers = local.user_arns
       // type        = "Service" für einen AWS-Service
-      type = "AWS" // für einen AWS-User
+      type = "AWS" // AWS-type, wenn man ARNs benutzen will als identifiers
     }
   }
 }

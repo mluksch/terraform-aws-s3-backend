@@ -31,6 +31,21 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "backend" {
 }
 
 resource "aws_s3_bucket_policy" "backend" {
-  bucket = ""
-  policy = ""
+  bucket = aws_s3_bucket.backend.id
+  policy = data.aws_iam_policy_document.s3-backend.json
+}
+
+data aws_iam_policy_document "s3-backend" {
+  statement {
+    actions = ["s3:*"]
+    // Resources muss man hier trotzdem angeben,
+    // auch wenn man das Statement als Policy
+    // auch an den Bucket klebt
+    resources = [aws_s3_bucket.backend.arn]
+    effect = "Allow"
+    principals {
+      identifiers = [aws_iam_role.backend.arn]
+      type = "AWS" // AWS-type, wenn man ARNs benutzen will als identifiers
+    }
+  }
 }
