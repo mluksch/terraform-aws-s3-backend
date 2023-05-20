@@ -12,6 +12,8 @@
     
 #### How to use
 versions.tf:
+
+- Possibility 1:
 ```terraform
 terraform {
   backend "s3" {
@@ -26,3 +28,15 @@ terraform {
   }
 }
 ```
+
+- Possibility 2:
+```terraform
+// Create a S3-Backend for TF by module invocation
+module "s3-backend" {
+  // just delete "https://" from the repo-url
+  source = "github.com/mluksch/aws-s3-tf-backend.git"
+  namespace = "my-cool-project"
+}
+```
+Afterwards you can use the output to hardcode the backend-config like in "Possibilty1".
+Unfortunately using Variables out Outputs is not allowed in the backend-config
