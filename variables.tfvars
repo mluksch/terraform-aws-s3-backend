@@ -1,3 +1,3 @@
 // Variable-Definition-File
-namespace = "example-backend"
-new_users = ["testie"]
+namespace = "mluk-backend"
+new_users = ["nosql-workbench"]

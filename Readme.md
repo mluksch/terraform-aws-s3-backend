@@ -10,9 +10,24 @@
     - backend-users: string[] - ARNs of all users with the role
     - backend-s3-config: config for s3-backend
     
-#### How to use
+#### How to use for me
 versions.tf:
 
+Put this into your S3-Backend-Config:
+```terraform
+terraform {
+  backend "s3" {
+    key = "<some customizable project-specific Key>"
+    bucket = "mluk-backend-1c9e27d2-8f8f-6ba6-feea-650dba519d69"
+    dynamodb_table = "mluk-backend-1c9e27d2-8f8f-6ba6-feea-650dba519d69"
+    encrypt = true
+    region = "eu-central-1"
+    role_arn = "arn:aws:iam::536209942758:role/mluk-backend-1c9e27d2-8f8f-6ba6-feea-650dba519d69"
+  }
+}
+```
+
+#### How to use for others
 - Possibility 1:
 ```terraform
 terraform {
@@ -41,3 +56,4 @@ module "s3-backend" {
 Afterwards you can use the output to hardcode the backend-config like in "Possibilty1".
 Unfortunately using Variables or Module-Outputs or any other TF-Element is not allowed in the backend-config.
 So you need to hardcode the backend-config!
+
