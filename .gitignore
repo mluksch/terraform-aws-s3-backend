@@ -3,3 +3,4 @@
 *.hcl
 *.tfstate
 *.tfstate.backup
+*.key
