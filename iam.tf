@@ -65,6 +65,12 @@ data "aws_iam_policy_document" "backend-role" {
     effect = "Allow"
     resources = [aws_dynamodb_table.backend.arn]
   }
+  // Optional: Just for NoSql-Workbench but not required for the s3-backend
+  statement {
+    actions = ["dynamodb:ListTables"]
+    effect = "Allow"
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role_policy" "backend" {
