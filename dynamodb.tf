@@ -5,7 +5,7 @@ resource "aws_dynamodb_table" "backend" {
     name = "LockID"
     type = "S"
   }
-  // default ist hier, wenn man nix angibt:
+  // default ist hier (d.h. wenn man nix angibt):
   // billing_mode = "PROVISIONED"
   // mit Pflichtangaben:
   // read_capacity  = 20
