@@ -8,6 +8,6 @@
 #### Outputs
     - backend-namespace: string
     - backend-users: string[] - ARNs of all users with the role
-    - backend-role: string - Role to assume with access to S3 & Dynamodb
-    - backend-s3: string - ARN of created role with access of S3-Bucket
-    - backend-dynamodb: string - ARN of Dynamodb-Table
+    - backend-role: string - Role-ARN for assuming in order to obtain S3-Access & Dynamodb-Access
+    - backend-s3-bucket-id: string - S3-Bucket-ID
+    - backend-dynamodb-table-id: string - Dynamodb-Table-ID
