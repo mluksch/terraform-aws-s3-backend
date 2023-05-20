@@ -39,4 +39,5 @@ module "s3-backend" {
 }
 ```
 Afterwards you can use the output to hardcode the backend-config like in "Possibilty1".
-Unfortunately using Variables out Outputs is not allowed in the backend-config
+Unfortunately using Variables or Module-Outputs or any other TF-Element is not allowed in the backend-config.
+So you need to hardcode the backend-config!
