@@ -3,7 +3,7 @@ output "namespace" {
 }
 
 output "user_arns" {
-  value = local.user_arns
+  value = local.all_user_arns
 }
 
 output "role" {

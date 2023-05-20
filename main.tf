@@ -8,7 +8,7 @@ data "aws_caller_identity" "backend" {}
 locals {
   namespace = "${var.namespace}-${random_uuid.backend.result}"
   // replace variable because variables cannot use datasources in Terraform
-  user_arns = length(var.user_arns) > 0 ? var.user_arns : [data.aws_caller_identity.backend.arn]
+  all_user_arns = concat(var.existing_users, [for new_user in aws_iam_user.new_users: new_user.arn], [data.aws_caller_identity.backend.arn])
 }
 
 
