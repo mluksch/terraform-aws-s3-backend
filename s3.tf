@@ -30,6 +30,9 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "backend" {
   }
 }
 
+// Statt einer Bucket-Policy zu definieren, besser anders:
+// Der Rolle eine Policy verpassen für den Bucket-Zugriff
+/*
 resource "aws_s3_bucket_policy" "backend" {
   bucket = aws_s3_bucket.backend.id
   policy = data.aws_iam_policy_document.s3-backend.json
@@ -48,4 +51,4 @@ data aws_iam_policy_document "s3-backend" {
       type = "AWS" // AWS-type, wenn man ARNs benutzen will als identifiers
     }
   }
-}
+}*/

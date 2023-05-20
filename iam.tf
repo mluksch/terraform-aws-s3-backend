@@ -11,7 +11,7 @@ resource "aws_iam_role" "backend" {
   }
 }
 
-// Die Policy in der Role, definiert die Benutzergruppe:
+// Die Assume-Role-Policy der Rolle definieren:
 // Wer darf diese Rolle annehmen?
 data "aws_iam_policy_document" "backend" {
   statement {
@@ -23,4 +23,23 @@ data "aws_iam_policy_document" "backend" {
       type = "AWS" // AWS-type, wenn man ARNs benutzen will als identifiers
     }
   }
+}
+
+// Die Policy definieren, worauf diese Rolle Zugriff hat:
+data "aws_iam_policy_document" "backend-role" {
+  statement {
+    actions = ["s3:*"]
+    effect = "Allow"
+    resources = [aws_s3_bucket.backend.arn]
+  }
+  statement {
+    actions = ["dynamodb:*"]
+    effect = "Allow"
+    resources = [aws_dynamodb_table.backend.arn]
+  }
+}
+
+resource "aws_iam_role_policy" "backend" {
+  policy = data.aws_iam_policy_document.backend-role.json
+  role   = aws_iam_role.backend.id
 }
