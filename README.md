@@ -1,5 +1,8 @@
 # TF Backend S3-Module
 
+Module published in TF-Registry:
+https://registry.terraform.io/modules/mluksch/s3-backend/aws/latest
+
 #### Inputs
     - namespace: string
     - existing_users: string[] - ARNs to existing IAM users
